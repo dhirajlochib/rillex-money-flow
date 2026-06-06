@@ -1,10 +1,6 @@
 # Rillex — Deposit Money Flow
 ## Complete Technical & Architectural Documentation
 
-> **Version:** 1.0 | **Date:** June 2026 | **Classification:** Client Confidential
->
-> This document describes the complete flow of funds in the Rillex platform from the moment a user initiates a deposit to the point where funds are secured in cold storage. Every layer has been designed with **enterprise-grade security**, **financial integrity**, and **operational reliability** as core principles.
-
 ---
 
 ## Table of Contents
@@ -55,19 +51,6 @@ USER WALLET
     v
 [7] Sweep → Hot Wallet → Cold Storage — Fund consolidation & security
 ```
-
-### Technology Stack
-
-| Component | Technology | Purpose |
-|-----------|-----------|---------|
-| Frontend | React / Next.js / wagmi / viem | Wallet connection, transaction signing |
-| Backend API | Node.js / Elysia / TypeScript | Business logic, webhook handling |
-| Database | PostgreSQL (Drizzle ORM) | Financial ledger, deposit records |
-| Queue | BullMQ (Redis-backed) | Async job processing (confirmations, sweeps) |
-| Cache | Redis (ioredis) | Idempotency, distributed locks, nonce tracking |
-| Blockchain | ERC-4337 Smart Accounts | Deposit address generation |
-| Monitoring | Alchemy | Webhook-based on-chain event detection |
-| Encryption | AES-256-GCM (Web Crypto API) | Private key encryption at rest |
 
 ---
 
@@ -150,11 +133,9 @@ After address generation, the address is automatically registered with Alchemy's
 
 ## 4. Step 3 — On-Chain Transaction Detection
 
-### Alchemy Webhook Pipeline
+### Webhook Pipeline
 
-When a user sends tokens to their deposit address, Alchemy's infrastructure detects the on-chain event and sends a webhook to the Rillex backend.
-
-**Endpoint:** `POST /alchemy`
+When a user sends tokens to their deposit address, the system detects the on-chain event in real-time and processes it through a secure pipeline.
 
 ### 6-Layer Webhook Security
 
