@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rillex — Deposit Money Flow</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #0d1117;
+      --bg-card: #161b22;
+      --bg-code: #1c2129;
+      --border: #30363d;
+      --text: #e6edf3;
+      --text-muted: #8b949e;
+      --accent: #58a6ff;
+      --accent-soft: rgba(88,166,255,0.12);
+      --green: #3fb950;
+      --orange: #d29922;
+      --purple: #bc8cff;
+      --radius: 10px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.75;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Header ── */
+    .hero {
+      text-align: center;
+      padding: 80px 24px 60px;
+      background: linear-gradient(180deg, #111820 0%, var(--bg) 100%);
+      border-bottom: 1px solid var(--border);
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      background: linear-gradient(135deg, #58a6ff, #bc8cff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 12px;
+    }
+    .hero p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .hero .badge {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 6px 16px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--green);
+      border: 1px solid rgba(63,185,80,0.3);
+      border-radius: 20px;
+      background: rgba(63,185,80,0.08);
+      letter-spacing: 0.04em;
+    }
+
+    /* ── Main Container ── */
+    .container {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+    }
+
+    /* ── Headings ── */
+    h2 {
+      font-size: 1.65rem;
+      font-weight: 700;
+      margin: 56px 0 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+      letter-spacing: -0.02em;
+    }
+    h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin: 32px 0 12px;
+      color: var(--accent);
+    }
+    h4 { font-size: 1.05rem; font-weight: 600; margin: 24px 0 8px; }
+
+    /* ── Paragraphs & Lists ── */
+    p { margin: 12px 0; color: var(--text); }
+    ul, ol { padding-left: 24px; margin: 12px 0; }
+    li { margin: 6px 0; }
+    li::marker { color: var(--accent); }
+    strong { font-weight: 600; color: #fff; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    hr { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
+
+    /* ── Blockquote ── */
+    blockquote {
+      border-left: 3px solid var(--accent);
+      background: var(--accent-soft);
+      padding: 16px 20px;
+      border-radius: 0 var(--radius) var(--radius) 0;
+      margin: 20px 0;
+      color: var(--text-muted);
+    }
+    blockquote strong { color: var(--text); }
+
+    /* ── Code ── */
+    code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.88em;
+      background: var(--bg-code);
+      padding: 2px 7px;
+      border-radius: 5px;
+      border: 1px solid var(--border);
+      color: var(--purple);
+    }
+    pre {
+      background: var(--bg-code);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      overflow-x: auto;
+      margin: 16px 0;
+    }
+    pre code {
+      background: none;
+      border: none;
+      padding: 0;
+      font-size: 0.85rem;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* ── Tables ── */
+    table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      margin: 16px 0;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      font-size: 0.92rem;
+    }
+    th {
+      background: var(--bg-card);
+      font-weight: 600;
+      text-align: left;
+      padding: 12px 16px;
+      color: var(--accent);
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+    td {
+      padding: 10px 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: rgba(88,166,255,0.04); }
+
+    /* ── Images ── */
+    .content img {
+      max-width: 100%;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      margin: 24px 0;
+      display: block;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+    }
+
+    /* ── TOC ── */
+    .toc {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      margin: 32px 0;
+    }
+    .toc ol { padding-left: 20px; }
+    .toc li { margin: 8px 0; }
+    .toc a { font-weight: 500; }
+
+    /* ── Footer ── */
+    .footer {
+      text-align: center;
+      padding: 40px 24px;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--border);
+      margin-top: 60px;
+    }
+    .footer em { color: var(--text-muted); }
+
+    /* ── Scrollbar ── */
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+    /* ── Responsive ── */
+    @media (max-width: 640px) {
+      .hero { padding: 48px 16px 36px; }
+      .container { padding: 20px 16px 60px; }
+      h2 { font-size: 1.35rem; }
+      table { font-size: 0.82rem; }
+      th, td { padding: 8px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hero">
+    <h1>Rillex — Deposit Money Flow</h1>
+    <p>Complete Technical &amp; Architectural Documentation for the Rillex Cryptocurrency Deposit Infrastructure</p>
+    <span class="badge">v1.0 &bull; June 2026 &bull; Client Confidential</span>
+  </div>
+
+  <div class="container">
+    <div class="content" id="content">Loading...</div>
+  </div>
+
+  <div class="footer">
+    <em>Document generated from live codebase analysis. All function names, security checks, and data flows verified against source code.</em>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script>
+    (async () => {
+      const res = await fetch('README.md');
+      let md = await res.text();
+
+      // Remove the first title + subtitle block (hero handles it)
+      md = md.replace(/^#\s+Rillex.*?\n## Complete.*?\n/s, '');
+      md = md.replace(/^>\s*\*\*Version.*?principles\.\n\n---\n/s, '');
+
+      marked.setOptions({
+        gfm: true,
+        breaks: false,
+        headerIds: true,
+        mangle: false,
+      });
+
+      document.getElementById('content').innerHTML = marked.parse(md);
+
+      // Wrap TOC in styled box
+      const firstOl = document.querySelector('.content > ol:first-of-type');
+      if (firstOl) {
+        const toc = document.createElement('div');
+        toc.className = 'toc';
+        const heading = document.createElement('h3');
+        heading.textContent = 'Table of Contents';
+        heading.style.marginTop = '0';
+        toc.appendChild(heading);
+        firstOl.parentNode.insertBefore(toc, firstOl);
+        toc.appendChild(firstOl);
+      }
+    })();
+  </script>
+</body>
+</html>
