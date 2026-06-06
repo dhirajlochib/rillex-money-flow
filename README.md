@@ -27,7 +27,7 @@
 
 ## 1. System Architecture Overview
 
-![Deposit Flow Overview](./01-deposit-flow-overview.jpg)
+![Deposit Flow Overview](./assets/01-deposit-flow-overview.jpg)
 
 The Rillex deposit system is a **7-stage pipeline** that moves funds safely from a user's external wallet to the platform, with full auditability at every step:
 
@@ -73,7 +73,7 @@ USER WALLET
 
 ## 2. Step 1 — User Initiates Deposit
 
-![Multi-Chain Architecture](./06-multi-chain-architecture.jpg)
+![Multi-Chain Architecture](./assets/06-multi-chain-architecture.jpg)
 
 ### User Journey
 
@@ -110,7 +110,7 @@ USER WALLET
 
 ## 3. Step 2 — Deposit Address Generation
 
-![Smart Account Generation](./02-smart-account-generation.jpg)
+![Smart Account Generation](./assets/02-smart-account-generation.jpg)
 
 ### Architecture: ERC-4337 Smart Accounts
 
@@ -210,7 +210,7 @@ This prevents an attack where someone deploys a worthless token with `symbol() =
 
 ## 5. Step 4 — Deposit Confirmation Pipeline
 
-![Confirmation Pipeline](./03-confirmation-pipeline.jpg)
+![Confirmation Pipeline](./assets/03-confirmation-pipeline.jpg)
 
 ### Adaptive Confirmation Polling
 
@@ -268,7 +268,7 @@ Check Block Confirmations via RPC
 
 ## 6. Step 5 — Wallet Credit
 
-![Atomic Wallet Credit](./09-atomic-wallet-credit.jpg)
+![Atomic Wallet Credit](./assets/09-atomic-wallet-credit.jpg)
 
 ### The 11-Step Atomic Credit Pattern
 
@@ -320,7 +320,7 @@ This means even if the same transaction is processed by both the Alchemy webhook
 
 ## 7. Step 6 — Fund Consolidation (Sweep)
 
-![Sweep Consolidation](./04-sweep-consolidation.jpg)
+![Sweep Consolidation](./assets/04-sweep-consolidation.jpg)
 
 ### Why Sweep?
 
@@ -399,7 +399,7 @@ For security, transfers from cold storage to hot wallet **require manual admin i
 
 ## 9. Security Architecture
 
-![Security Layers](./05-security-layers.jpg)
+![Security Layers](./assets/05-security-layers.jpg)
 
 ### Defense in Depth — 10 Security Layers
 
@@ -427,7 +427,7 @@ For security, transfers from cold storage to hot wallet **require manual admin i
 
 ## 10. Error Handling & Recovery
 
-![Error Handling & Recovery](./07-error-handling-recovery.jpg)
+![Error Handling & Recovery](./assets/07-error-handling-recovery.jpg)
 
 ### Automatic Recovery
 
@@ -456,7 +456,7 @@ Non-stablecoin deposits (ETH, BTC, etc.) are **immediately rejected** rather tha
 
 ## 11. Admin Controls & Monitoring
 
-![Admin Monitoring](./08-admin-monitoring.jpg)
+![Admin Monitoring](./assets/08-admin-monitoring.jpg)
 
 ### Sweep Agent Configuration
 
@@ -512,7 +512,7 @@ Thanks to the ERC-4337 Smart Account architecture with CREATE2, every user gets 
 
 ## 13. Visual Diagrams Reference
 
-All diagrams are stored in the `money-flow/` directory:
+All diagrams are stored in the `assets/` directory:
 
 | # | File | Description |
 |---|------|-------------|
@@ -531,7 +531,7 @@ All diagrams are stored in the `money-flow/` directory:
 
 ## Summary
 
-![Complete Money Journey](./10-complete-money-journey.jpg)
+![Complete Money Journey](./assets/10-complete-money-journey.jpg)
 
 The Rillex deposit system represents a **production-grade, enterprise-level cryptocurrency payment infrastructure** with:
 
